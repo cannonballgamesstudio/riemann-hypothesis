@@ -401,8 +401,8 @@ lemma finrank_frameSum_add_finrank_framePerp (γ : S.G E) :
     finrank E (frameSum γ) + finrank E (framePerp γ) = 𝔰.r := by
   have h_unit : IsUnit S.ratGram.det := (isUnit_iff_isUnit_det _).1 Floors.IsHermitianUnit.isUnit
   have h_rank : ((framePair γ)ᴴ * S.ratGram).rank = finrank E (frameSum γ) := by
-    rw [rank_mul_eq_left_of_isUnit_det _ _ h_unit, rank_conjTranspose_eq, ← colSpan_framePair,
-      ← finrank_range_mulVecLin]
+    rw [rank_mul_eq_left_of_isUnit_det _ _ h_unit, Matrix.rank_conjTranspose_of_field,
+      ← colSpan_framePair, ← finrank_range_mulVecLin]
   rw [← h_rank, Shape.r, ← finrank_fintype_fun_eq_card E, framePerp, ← finrank_range_mulVecLin]
   exact ((framePair γ)ᴴ * S.ratGram).mulVecLin.finrank_range_add_finrank_ker
 
