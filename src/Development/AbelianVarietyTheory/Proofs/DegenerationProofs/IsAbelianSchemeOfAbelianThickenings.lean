@@ -124,7 +124,7 @@ def fnSec (π : X' ⟶ X) (s : Γ(X', ⊤)) : LB.Sec ((Inh.trivLB X).pull π) wh
 
 theorem triv_pull (π : X' ⟶ X) : Triv ((Inh.trivLB X).pull π) :=
   ⟨⟨fun _ => 1⟩, fun i j => by
-    erw [Inh.linComb_triv_g, _root_.one_mul]
+    rw [Inh.linComb_triv_g, _root_.one_mul]
     exact (map_one _).trans (map_one _).symm⟩
 
 theorem preconnectedSpace_of_line {R F : Type} [CommRing R] [Field F]

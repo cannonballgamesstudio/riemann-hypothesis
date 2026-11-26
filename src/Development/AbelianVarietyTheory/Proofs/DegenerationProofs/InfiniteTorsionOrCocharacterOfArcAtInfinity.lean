@@ -387,7 +387,7 @@ theorem exists_algHom_localizationAway_of_rational_points :
   refine ⟨AlgHom.liftOfSurjective _ hsurj Θ hle, fun i => ?_⟩
   have h2 : f i = MvPolynomial.aeval f (MvPolynomial.X i : MvPolynomial (Fin r) k) := by simp
   rw [h2]
-  erw [AlgHom.liftOfSurjective_apply]
+  rw [AlgHom.liftOfSurjective_apply]
   simp only [Θ, MvPolynomial.aeval_X]
   rw [mul_assoc, hu, mul_one]
 

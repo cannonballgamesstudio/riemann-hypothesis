@@ -991,7 +991,7 @@ theorem actCompat_of_match (hL : Laws) (hL2 : Laws2) {E : Type} [Field E] [Numbe
     exact alg _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ b₁ b₂ b₃ b₄ b₅ b₆ h
   have e₄ := key _ _ _ _ e₃
   rw [← e₂] at e₄
-  erw [eW (star x) y, eW x y'] at e₄
+  rw [eW (star x) y, eW x y'] at e₄
   exact e₄
 
 theorem exists_has : HV → Laws6 → GlobalTheory.LN.UDvrSt → GlobalTheory.LN.HomExtSt → ThetaPtDeterminesSt → EndDeterminedOnTorsionSt → ThetaUnifAV → AllA fun {E} _ _ _ {H} {D} {l} {Xo} {c} {W₀} Y {O'} _ _ {b} a => ∀ (K : Type) [Field K] [IsAlgClosed K] [Algebra (FractionRing O') K] [Algebra (PowerSeries O') K] [FaithfulSMul (PowerSeries O') K] [Algebra.IsAlgebraic (PowerSeries O') K], (∀ x, algebraMap (FractionRing O') K (algebraMap O' _ x) = algebraMap (PowerSeries O') K (PowerSeries.C x)) → ∀ (S : Ser a K (algebraMap _ K)) (n : ℕ), n.Prime → Odd n → IsUnit (n : O') → ∀ o₀ : Full D K, o₀.ρ = S.A.ρ → (∀ j, o₀.I.ζ (n ^ j) = S.A.I.ζ (n ^ j) ∧ o₀.Theta (n ^ j) (S.v (n ^ j))) → ∃ o, S.Has o := by

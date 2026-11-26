@@ -239,7 +239,7 @@ theorem ratio_res {α : Φ.E.X} {φ φ₀ : (Φ.H 1).Sec} (hφ : Φ.Pure α φ) 
     have e₃ := Φ.G.left.basicOpen_of_isUnit hv'
     rw [Scheme.basicOpen_mul, Φ.E.B.left.basicOpen_of_isUnit (Units.isUnit _),
       inf_eq_left.2 (Φ.E.B.left.basicOpen_le c), Scheme.preimage_basicOpen, ← e₃]
-    erw [Scheme.basicOpen_res]
+    rw [Scheme.basicOpen_res]
     exact inf_le_right
 
 theorem span_eq_top [IsAlgClosed k] {α : Φ.E.X} {φ₀ : (Φ.H 1).Sec} (hφ₀ : Φ.Pure 0 φ₀)

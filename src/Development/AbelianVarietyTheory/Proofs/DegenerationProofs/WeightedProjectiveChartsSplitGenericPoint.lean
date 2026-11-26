@@ -1129,7 +1129,7 @@ theorem mul_eq_of_rel {C : Charts H.left} {a : {i // C.wt i = C.c₀}} {d : ℕ}
   have hu : IsUnit (((1 : Y ⟶ H).left.appLE _ ⊤ h).hom (C.r a (j n))) := by
     refine RingedSpace.isUnit_of_isUnit_germ (X := Y.left.toRingedSpace) ⊤ _ fun x hx => ?_
     refine (Scheme.mem_basicOpen Y.left _ x hx).1 ?_
-    erw [Scheme.basicOpen_appLE]
+    rw [Scheme.basicOpen_appLE]
     exact ⟨trivial, (toUnit Y).left.preimage_mono (hb.2 n).2 trivial⟩
   rw [appTop_charUnit_mul]
   refine (hu.mul hu).mul_right_cancel ?_

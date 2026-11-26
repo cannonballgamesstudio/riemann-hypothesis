@@ -349,7 +349,7 @@ theorem fam_of_term {φ : (Φ.H d).Sec} {w : ∀ l, Γ(Φ.E.B.left, Φ.N₀.U l)
   obtain ⟨z, rfl⟩ := Φ.D.q_surjective.surj y
   have := Φ.D.q_flat
   have e := gs_sec φ (𝟙 _) z (i := l) (j := l') hl hl'
-  erw [h l, h l'] at e
+  rw [h l, h l'] at e
   rw [gs_term Φ d α l _ z hl, gs_term Φ d α l' _ z hl', mul_left_comm, ← Units.val_mul, tr_mg Φ d α z l l' hl hl',
     Units.val_mul, ← _root_.mul_assoc] at e
   refine stalkMap_inj Φ.D.q.left z ?_
@@ -371,7 +371,7 @@ theorem mem_locus_term {φ : (Φ.H d).Sec} {w : ∀ l, Γ(Φ.E.B.left, Φ.N₀.U
     (z : Φ.G.left) (l : Φ.N₀.ι) (hl : Φ.D.q.left z ∈ Φ.N₀.U l) :
     z ∈ Out.nonzeroLocus φ ↔ IsUnit (gs (𝟙 _) (Φ.D.q.left z) _ (w l)) := by
   refine (mem_locus_iff φ (𝟙 _) z (k := l) hl).trans ?_
-  erw [h l]
+  rw [h l]
   rw [gs_term Φ d α l _ z hl, Units.isUnit_mul_units, isUnit_map_iff]
 
 variable {N : ℕ} (π : Φ.Pol N) (α)

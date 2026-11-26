@@ -137,7 +137,7 @@ theorem _root_.GlobalTheory.SS.WtRat.isUnit_ev (g : _root_.ReciprocityTheory.Cha
     IsUnit (_root_.GlobalTheory.SS.WtRat.ev g V h u) := by
   have hb : ⊤ ≤ (_root_.ReciprocityTheory.ChartRestriction.G.Geo.Tor.Sp R).basicOpen ((g.appLE V ⊤ h).hom u) := by
     have := Scheme.basicOpen_appLE g ⊤ V h u
-    erw [this]
+    rw [this]
     exact le_inf le_rfl hu
   exact (isUnit_of_basicOpen_covers_scheme _ _ hb).map (Scheme.ΓSpecIso (CommRingCat.of R)).hom.hom
 

@@ -368,7 +368,7 @@ theorem exists_iso_of_rel (hA : AmpleSt) {R : Type} [CommRing R] [IsNoetherianRi
 theorem eSec_fst {S S' : Scheme.{0}} (p : S' ⟶ S) (G : Over S) [GrpObj G] :
     eSec ((Over.pullback p).obj G) ≫ pullback.fst G.hom p = p ≫ eSec G := by
   rw [eSec, eSec, Functor.obj.η_def, Over.comp_left, Over.ε_pullback_left, Category.assoc, IsIso.inv_comp_eq]
-  erw [ExtUnique.pullback_map_left_fst, ← Category.assoc, ← pullback.condition]
+  rw [ExtUnique.pullback_map_left_fst, ← Category.assoc, ← pullback.condition]
   simp
 
 theorem eSec_comp {S : Scheme.{0}} {G H : Over S} [GrpObj G] [GrpObj H] (f : G ⟶ H) [IsMonHom f] :
@@ -406,7 +406,7 @@ theorem exists_hom_dvr
     have h₃ : α.hom.left ≫ pullback.fst (pullback.snd G.hom j) κ = ψ := by
       rw [← cancel_mono (pullback.fst G.hom j), hψ]
       exact (Category.assoc _ _ _).trans hα'
-    erw [hF'] at h₁
+    rw [hF'] at h₁
     rw [Over.comp_left, Over.comp_left] at h₁
     erw [← reassoc_of% h₁, hβ', reassoc_of% h₂, reassoc_of% h₃]
   · have : eV = eSec ((Over.pullback l).obj G) := by
@@ -414,7 +414,7 @@ theorem exists_hom_dvr
       · exact h₁.trans (eSec_fst l G).symm
       · exact h₂.trans (Over.w η[(Over.pullback l).obj G]).symm
     rw [this]
-    erw [← Category.assoc, eSec_comp F]
+    rw [← Category.assoc, eSec_comp F]
     exact eSec_fst l G'
 
 theorem existsUnique_rel_generic
@@ -479,12 +479,12 @@ theorem GlobalTheory.polAV_iso_extends_of_isIntegrallyClosed : Laws → Laws2 �
   obtain ⟨Ψ, hΨ, hw⟩ := exists_iso_of_rel hl.ample P P' _ _ v hv
     (by
       have : ψ.hom.left ≫ pullback.snd P.A.hom (jK R) = pullback.snd P'.A.hom (jK R) := Over.w ψ.hom
-      erw [Category.assoc, pullback.condition, reassoc_of% this, pullback.condition])
+      rw [Category.assoc, pullback.condition, reassoc_of% this, pullback.condition])
     (existsUnique_rel_generic hext P P' ψ.hom rfl v hv h₀ h₀' hn) fun n a => by
       have H := existsUnique_rel_generic hext P' P ψ.inv rfl u hu h₀' h₀ (fun T κ z => by
         rw [hu' T _ z j₀ j₀' ((congrArg (fun q => q (κ z) ∈ P.L.U j₀) (eSec_fst (jK R) P.A)).mpr (h₀ _))
           ((congrArg (fun q => q (κ z) ∈ P'.L.U j₀') e₂).mpr (h₀' _))]
-        erw [Category.assoc, eSec_comp ψ.inv, hn, inv_one]) n a
+        rw [Category.assoc, eSec_comp ψ.inv, hn, inv_one]) n a
       refine (existsUnique_congr fun b => ⟨fun h e Z r z j j' hj hj' => ?_, fun h e Z r z j' j hj' hj => ?_⟩).1 H
       · have m' := (congrArg (fun q : Z ⟶ P'.A.left => q z ∈ P'.L.U j') (congrArg (r ≫ ·) eB)).mpr hj'
         have := h e Z (r ≫ ψ.hom.left) z j' j m' hj

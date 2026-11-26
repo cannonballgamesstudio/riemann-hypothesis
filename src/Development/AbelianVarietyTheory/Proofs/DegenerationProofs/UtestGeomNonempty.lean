@@ -106,7 +106,7 @@ theorem norm_move (hL₀ : L₀.IsLB) (hL₁ : L₁.IsLB) {a : ℤ} {n : ℕ} {r
   have q₂ := hr _ (𝟙 _ ≫ T.hom) y J J' hJ hJ'
   rw [Fintype.prod_unique, zpow_one] at q₂
   rw [val_pull hJ', val_rigT _ _ _ hJ']
-  erw [q₂] at q
+  rw [q₂] at q
   apply Additive.ofMul.injective
   replace q := congrArg Additive.ofMul q
   simp only [ofMul_mul, ofMul_zpow] at q ⊢
