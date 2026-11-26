@@ -349,7 +349,7 @@ theorem valT_cst {R T : Type} [CommRing R] [CommRing T] {X : Scheme.{0}} (f : X 
   have e3 : Scheme.Hom.appLE (𝟙 (Sp R)) ⊤ ⊤ le_top = 𝟙 _ := by
     rw [← Scheme.Hom.id_appTop]; exact Scheme.Hom.appLE_eq_app _
   unfold valH
-  erw [e3]
+  rw [e3]
   simp
 
 theorem exists_translate {k F K : Type} [CommRing k] [CommRing F] [CommRing K] (a : k →+* F) (e : F →+* K)

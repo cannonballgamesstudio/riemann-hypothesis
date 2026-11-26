@@ -354,7 +354,7 @@ theorem valT_comp (φ : T →+* T') (w : Sp T ⟶ X) (U : X.Opens) (h : ⊤ ≤ 
     exact (Scheme.Hom.appLE_comp_appLE _ _ _ _ _ _ _).symm
   unfold evalHom
   rw [e, Category.assoc]
-  erw [Scheme.ΓSpecIso_naturality]
+  rw [Scheme.ΓSpecIso_naturality]
   rfl
 
 theorem valT_cst (w : Sp T ⟶ X) (π : X ⟶ Sp T) (hw : w ≫ π = 𝟙 _) (U : X.Opens) (h : ⊤ ≤ w ⁻¹ᵁ U) (a : T) :
@@ -403,13 +403,13 @@ theorem section_ext {K : Type} [Field K] (π : X ⟶ Sp K) (w w' : Sp K ⟶ X) (
     · intro hu
       have : p ∈ (Sp K).basicOpen ((v.appLE U ⊤ hv).hom f) := by
         rw [Scheme.basicOpen_of_isUnit _ hu]; trivial
-      erw [e2] at this
+      rw [e2] at this
       exact this.2
     · intro hp
       apply RingedSpace.isUnit_of_isUnit_germ
       intro q hq
       have : q ∈ (Sp K).basicOpen ((v.appLE U ⊤ hv).hom f) := by
-        erw [e2]; rw [hs q p]; exact ⟨trivial, hp⟩
+        rw [e2]; rw [hs q p]; exact ⟨trivial, hp⟩
       exact ((Sp K).mem_basicOpen _ q hq).1 this
   have hev : evalHom w U h = evalHom w' U h' := by
     ext f
@@ -473,19 +473,19 @@ theorem jac_chart (x : KeyIn R) {n : ℕ} (s : Fin x.P.g → RR x n) (z : Pt x) 
   have hk' := top_le_translate x z k h'
   have e1 : (valT (T := DualNumber R) ((toUnit (epsR R) ≫ z) * x.v k).left (x.P.L.U c') ((s i).f c')).fst = 0 := by
     have := valT_comp (TrivSqZeroExt.fstHom R R R).toRingHom _ _ hk' ((s i).f c')
-    erw [fst_translate x z k, h0 i] at this
+    rw [fst_translate x z k, h0 i] at this
     exact this.symm
   have e2 : ((trU (T := DualNumber R) ((toUnit (epsR R) ≫ z) * x.v k).left x.P.L c c' hk hk').val).fst =
       (trU (T := R) z.left x.P.L c c' h h').val := by
     have := valT_comp (TrivSqZeroExt.fstHom R R R).toRingHom _ (x.P.L.U c ⊓ x.P.L.U c')
       (fun _ hp => ⟨hk hp, hk' hp⟩) (x.P.L.g c c').val
-    erw [fst_translate x z k] at this
+    rw [fst_translate x z k] at this
     rw [trU_val, trU_val]
     exact this.symm
   rw [Matrix.smul_apply, Matrix.of_apply, Matrix.of_apply]
-  erw [valT_sec _ x.P.L c c' hk hk' n (s i)]
+  rw [valT_sec _ x.P.L c c' hk hk' n (s i)]
   rw [TrivSqZeroExt.snd_mul]
-  erw [e1]
+  rw [e1]
   rw [TrivSqZeroExt.fst_pow, e2]
   simp
 
@@ -637,7 +637,7 @@ theorem exists_perm {K : Type} [Field K] {x : KeyIn K} {n d : ℕ} {s : Fin x.P.
         intro q hq
         have : q ∈ (Sp K).basicOpen
             (((show Sp K ⟶ x.P.A.left from (z a).left).appLE (x.P.L.U c) ⊤ hcU).hom ((s i).f c)) := by
-          erw [e2]; rw [hs q p]; exact ⟨trivial, hc⟩
+          rw [e2]; rw [hs q p]; exact ⟨trivial, hc⟩
         exact ((Sp K).mem_basicOpen _ q hq).1 this
       exact (e1.2 e3).ne_zero e)
     exact ⟨a', Over.OverMorphism.ext (section_ext x.P.A.hom _ _ (Over.w (z' a')) (Over.w (z a)) q p hq)⟩

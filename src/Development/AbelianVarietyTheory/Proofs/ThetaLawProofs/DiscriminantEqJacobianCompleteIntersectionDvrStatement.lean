@@ -1546,7 +1546,7 @@ theorem valT_cst {R T : Type} [CommRing R] [CommRing T] {X : Scheme.{0}} (π : X
   have e3 : Scheme.Hom.appLE (𝟙 (Sp R)) ⊤ ⊤ le_top = 𝟙 _ := by
     rw [← Scheme.Hom.id_appTop]; exact Scheme.Hom.appLE_eq_app _
   unfold valH
-  erw [e3]
+  rw [e3]
   simp
 
 theorem eval_det_pderiv_mul {O : Type} [CommRing O] {g : ℕ} (e : MvPowerSeries (Fin g) O →ₐ[O] O)

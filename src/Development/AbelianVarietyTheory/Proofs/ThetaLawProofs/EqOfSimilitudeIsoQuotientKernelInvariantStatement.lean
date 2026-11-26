@@ -198,7 +198,7 @@ theorem eq_of_similitude_invariant : Out.Laws → ∀ (K : Type) [Field K] [IsAl
   rw [hval _ _ y J hJ, hval _ _ y J hJ, val_mul hJ, val_mul hJ, val_mul hJ, val_mul hJ, val_inv, val_inv,
     val_pull hJ, val_pull hJ, val_pull hJ, val_pull hJ, val_pull hJ, val_pull hJ, e₁, Category.id_comp,
     Category.id_comp]
-  erw [e₂]
+  rw [e₂]
   congr 1
   rw [mul_inv_eq_iff_eq_mul, mul_right_comm, eq_mul_inv_iff_mul_eq, hv, mul_comm]
 

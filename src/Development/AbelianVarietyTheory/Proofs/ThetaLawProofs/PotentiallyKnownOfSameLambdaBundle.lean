@@ -247,7 +247,7 @@ variable {X Y : Scheme.{0}}
 theorem gs_eq_toStalk (x : Sp ℂ ⟶ X) (U : X.Opens) (h : ⊤ ≤ x ⁻¹ᵁ U) (f : Γ(X, U)) :
     gs x pt U f = toStalk (valAt' x U f) := by
   rw [gs_eq x pt U (h trivial), valAt', dite_eq_left h, valAt, toStalk, RingHom.comp_apply]
-  erw [(Scheme.ΓSpecIso (CommRingCat.of ℂ)).hom_inv_id_apply]
+  rw [(Scheme.ΓSpecIso (CommRingCat.of ℂ)).hom_inv_id_apply]
   exact (TopCat.Presheaf.germ_res_apply (Sp ℂ).presheaf (homOfLE h) pt trivial _).symm
 
 theorem gm_eq_toStalk (x : Sp ℂ ⟶ X) (U : X.Opens) (h : ⊤ ≤ x ⁻¹ᵁ U) (f : Γ(X, U)ˣ) :
@@ -990,7 +990,7 @@ theorem exists_isTranslate (laws : Out.Laws) {K : Type} [Field K] (y y' : KeyIn 
     rw [Category.comp_id] at a b c
     refine (val_map mu r _ z hJ).trans ?_
     rw [a, hν]
-    erw [b, c]
+    rw [b, c]
     rw [← map_zpow, ← map_mul, ← map_mul]
     have d := Units.ext ((hu (r z) _ fun ψ => hJ (r ≫ ψ)).trans (gs_unit _ _ ⊤ trivial _))
     rw [mul_inv_eq_iff_eq_mul, mul_inv_eq_iff_eq_mul] at d
@@ -1113,7 +1113,7 @@ theorem IsTranslate.baseChange {K : Type} [CommRing K] {y' y : KeyIn K} {t : �
     rw [E, hφe'] at e₄
     simp only [Fintype.prod_unique, zpow_one] at e₁ e₂ e₃
     have e₅ : gm (𝟙 _ ≫ baseMap f) q _ (rp₀.s (fun _ => I (p.left ≫ φ))) =
-      gm ((𝟙 _ ≫ baseMap f) ≫ 𝟙 _) q _ (rp₀.s (fun _ => I (p.left ≫ φ))) := by erw [Category.comp_id]
+      gm ((𝟙 _ ≫ baseMap f) ≫ 𝟙 _) q _ (rp₀.s (fun _ => I (p.left ≫ φ))) := by rw [Category.comp_id]
     have e₆ := e₁.symm.trans (e₅.trans (e₂.trans (congrArg _ e₃)))
     have i₁ : gw v (𝟙 _ ≫ p.left) q (I (p.left ≫ φ)) (J (𝟙 _ ≫ p.left)) =
       gw v p.left q (I (p.left ≫ φ)) (J (𝟙 _ ≫ p.left)) := congrArg (gw v · q _ _) (Category.id_comp _)

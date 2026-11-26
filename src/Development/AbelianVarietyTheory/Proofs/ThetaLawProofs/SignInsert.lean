@@ -155,7 +155,7 @@ def mulSec {X : Scheme.{0}} (L : LB X) {a b c : ℤ} (h : c = a + b) (s : LB.Sec
     change rs X (inf_le_left : L.U i ⊓ L.U j ≤ L.U i) (_ * _) =
       ((L.g i j ^ c : Γ(X, L.U i ⊓ L.U j)ˣ) : Γ(X, L.U i ⊓ L.U j)) * rs X (inf_le_right : L.U i ⊓ L.U j ≤ L.U j) (_ * _)
     rw [map_mul, map_mul]
-    erw [hs, ht]
+    rw [hs, ht]
     rw [h, zpow_add, Units.val_mul]
     exact mul_mul_mul_comm _ _ _ _
 
@@ -165,12 +165,12 @@ theorem valH_cst (x : KeyIn R) (z : Pt x) (U : x.P.A.left.Opens) (h : ⊤ ≤ z.
       valT (T := R) z.left U ((x.P.A.hom.appLE ⊤ U le_top).hom ((Scheme.ΓSpecIso (CommRingCat.of R)).inv.hom c)) := rfl
   refine h0.trans ((EtBaseChange.valT_appLE (T := R) z.left x.P.A.hom (U := ⊤) le_top h _).trans ?_)
   have hz : z.left ≫ x.P.A.hom = 𝟙 (Sp R) := Over.w z
-  erw [hz]
+  rw [hz]
   rw [EtBaseChange.valT_eq _ _ le_top]
   have e3 : Scheme.Hom.appLE (𝟙 (Sp R)) ⊤ ⊤ le_top = 𝟙 _ := by
     rw [← Scheme.Hom.id_appTop]; exact Scheme.Hom.appLE_eq_app _
   unfold EtBaseChange.valH
-  erw [e3]
+  rw [e3]
   simp
 
 theorem cast_step {g n l j : ℕ} (h : g * n < l) (hj : j < g) :
