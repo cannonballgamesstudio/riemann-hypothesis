@@ -284,11 +284,11 @@ theorem exists_affine_frame (Y : Model Xo c (RingHom.id c.F)) (Z : Comp Xo c) (x
   have e := spMap_ev (tau hV ≫ q) hU hz
   obtain ⟨F', -⟩ := F.exists_isMap (ev (tau hV ≫ q) U hz) rfl (x' := tau hV ≫ (barComp Y Z).ι) (by
     rw [← Category.assoc]
-    erw [e]
+    rw [e]
     simp only [q, Category.assoc, IsIso.inv_hom_id, Category.comp_id])
   refine ⟨V, hV, _, F', hxV, fun _ h => (hle h).1, ?_⟩
   rw [← spMap_comp', ← hφ, ← Category.assoc (spMap _)]
-  erw [e]
+  rw [e]
   simp only [q, Category.assoc, hs]
 
 section Main

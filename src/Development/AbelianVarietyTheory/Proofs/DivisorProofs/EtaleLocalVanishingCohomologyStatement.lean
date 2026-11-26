@@ -848,16 +848,16 @@ theorem exists_etale_kill_of_indEt : ∀ (q : ℕ) (B O : Type) [CommRing B] [Co
     exact this
   have hyj : pull _ (spMap ((Under.forget _).mapCocone (Cocone.mk _ ι) |>.ι.app j).hom) _ _
       (pull _ (spMap (D.obj j).hom.hom) _ _ y) = 0 := by
-    erw [← pull_comp]
+    rw [← pull_comp]
     have hw : (D.obj j).hom ≫ (ι.app j).right = CommRingCat.ofHom (algebraMap B O) := by
       simpa using Under.w (ι.app j)
     have : spMap ((Under.forget _).mapCocone (Cocone.mk _ ι) |>.ι.app j).hom ≫ spMap (D.obj j).hom.hom
         = spMap (algebraMap B O) := by
       simp only [spMap, ← Functor.map_comp, ← Spec.map_comp]
       congr 2
-    erw [this]; exact hy
+    rw [this]; exact hy
   obtain ⟨k, f, hk⟩ := (_root_.GlobalTheory.EtC.pairingProperties q (D ⋙ Under.forget _) _ hc' n i).2 j _ hqj hyj
-  erw [← pull_comp] at hk
+  rw [← pull_comp] at hk
   have hwk : (D.obj j).hom ≫ (D.map f).right = (D.obj k).hom := by simpa using Under.w (D.map f)
   letI : Algebra B (D.obj k).right := (D.obj k).hom.hom.toAlgebra
   refine ⟨(D.obj k).right, inferInstance, this, het k, ⟨(ι.app k).right.hom, fun b => ?_⟩, ?_⟩
@@ -868,7 +868,7 @@ theorem exists_etale_kill_of_indEt : ∀ (q : ℕ) (B O : Type) [CommRing B] [Co
         = spMap (algebraMap B (D.obj k).right) := by
       simp only [spMap, ← Functor.map_comp, ← Spec.map_comp]
       congr 2
-    erw [this] at hk; exact hk
+    rw [this] at hk; exact hk
 
 end GlobalTheory.EtC
 end -- clump:auto

@@ -62,9 +62,9 @@ theorem exists_hom_of_levels {R : Type} [CommRing R] [IsDomain R] [IsNoetherianR
   have k : F e ≫ (snd Y Z).left = p e ≫ f e := F₂ e
   rw [Over.comp_left, Over.comp_left, ← Category.assoc, ← map_fst, Category.assoc,
     ← Category.assoc (pullback.fst _ _), hg]
-  erw [k]
+  rw [k]
   rw [← Category.assoc]
-  erw [hj]
+  rw [hj]
   exact Category.id_comp _
 
 

@@ -508,7 +508,7 @@ theorem exists_nonzero {R : Type} [CommRing R] [IsDomain R] [IsLocalRing R] {R' 
     pullback.lift ((U'.gt 0).pG.left ≫ prA hD)
       ((thickObj R' (maximalIdeal R') 0 G').hom ≫ spMap (Ideal.quotientMap _ ρ hle)) (by
         rw [Category.assoc, hover, ← Category.assoc]
-        erw [hpG]
+        rw [hpG]
         rw [Category.assoc, hsq, Category.assoc])
   have hvan' : ∀ α, α ≠ 0 → ∀ j, ((U'.gt 0).pG.left.app _).hom ((f' α).f j) = 0 := fun α hα j =>
     app_eq_zero_of_isSecPull D.toPre.P.isLB (GlobalTheory.ExpGTrans.famφB_pull hD α) (hf α)

@@ -97,14 +97,14 @@ lemma cechLev_π {f g : Arrow PSh} (F : f ⟶ g) (k : SimplexCategoryᵒᵖ) (j 
     ((evaluation _ PSh).obj k).map (Arrow.mapCechNerve F) ≫ WidePullback.π (fun _ => g.hom) j =
       WidePullback.π (fun _ => f.hom) j ≫ F.left := by
   simp only [evaluation_obj_map, Arrow.mapCechNerve_app]
-  erw [WidePullback.lift_π]
+  rw [WidePullback.lift_π]
 
 lemma cechLev_base {f g : Arrow PSh} (F : f ⟶ g) (k : SimplexCategoryᵒᵖ) :
     ((evaluation _ PSh).obj k).map (Arrow.mapCechNerve F) ≫
         WidePullback.base (fun _ : Fin (k.unop.len + 1) => g.hom) =
       WidePullback.base (fun _ => f.hom) ≫ F.right := by
   simp only [evaluation_obj_map, Arrow.mapCechNerve_app]
-  erw [WidePullback.lift_base]
+  rw [WidePullback.lift_base]
 
 theorem cech_level_limit (I : Type) [SmallCategory I] [IsCofiltered I] (A : I ⥤ Arrow PSh) (cA : Cone A)
     (hl : IsLimit (Arrow.leftFunc.mapCone cA)) (_hA : ∀ ⦃i j : I⦄ (f : i ⟶ j), IsIso (A.map f).right)
@@ -833,10 +833,10 @@ theorem cechPt_map (k : ℕ) {U V : Scheme.{0}} (g : V ⟶ U) (x : U ⟶ X) (y :
     apply WidePullback.hom_ext
     · intro j
       rw [Category.assoc]
-      erw [WidePullback.lift_π, WidePullback.lift_π]
+      rw [WidePullback.lift_π, WidePullback.lift_π]
       simp
     · rw [Category.assoc]
-      erw [WidePullback.lift_base, WidePullback.lift_base]
+      rw [WidePullback.lift_base, WidePullback.lift_base]
       simp
   have := congrArg (fun φ => φ.app (op V) (𝟙 V)) key
   simp only [NatTrans.comp_app_apply] at this

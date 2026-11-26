@@ -957,7 +957,7 @@ theorem inj_gen (ρ₁ : R →+* R₁) {d : ℕ} (b : Fin d → R₁)
   have e2 := gs_res (𝟙 X) x hVU hxV (a l)
   simp only [Pi.zero_apply] at e
   rw [← e2]
-  erw [e]
+  rw [e]
   rw [_root_.GlobalTheory.UU.SchurComp.gs_zero, _root_.GlobalTheory.UU.SchurComp.gs_zero]
 
 theorem surj_gen (ρ₁ : R →+* R₁) {d : ℕ} (b : Fin d → R₁)

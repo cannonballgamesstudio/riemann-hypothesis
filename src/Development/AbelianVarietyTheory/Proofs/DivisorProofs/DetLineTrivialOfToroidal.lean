@@ -365,7 +365,7 @@ theorem valR_spMap_fromSpec {X : Scheme.{0}} {R : Type} [CommRing R] {U W : X.Op
     (Scheme.ΓSpecIso (CommRingCat.of R)).hom).hom f =
     (X.presheaf.map (homOfLE e).op ≫ CommRingCat.ofHom φ).hom f
   rw [e1, e2, Category.assoc, Category.assoc]
-  erw [n]
+  rw [n]
   erw [(Scheme.ΓSpecIso Γ(X, W)).inv_hom_id_assoc]
 
 theorem exists_eq_algX {F : Type} [Field F] {Y : Scheme.{0}} (p : Y ⟶ Sp F) [GeometricallyIntegral p]
@@ -727,7 +727,7 @@ theorem exists_section_of_horFn : ∀ (E : Type) [Field E] [NumberField E] [IsCM
         factor (gm (mem_ptsIn.1 h₁)) (b y) (fz z) * gm (mem_ptsIn.1 h₃) r := by
       refine IsFractionRing.injective (B.X.presheaf.stalk z) B.X.functionField (mul_left_cancel₀ (ε z).ne_zero ?_)
       rw [map_mul, ← _root_.mul_assoc, ← hδε, ← hδε]
-      erw [algebraMap_germ]
+      rw [algebraMap_germ]
       rw [hr, mul_div_cancel₀ _ (δ y).ne_zero]
     rw [← e₃, e₄, map_mul, ← _root_.mul_assoc, e₁, _root_.one_mul, ev_eq h₃, ← hχ]
     rfl

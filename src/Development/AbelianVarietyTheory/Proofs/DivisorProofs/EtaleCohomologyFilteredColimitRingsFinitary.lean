@@ -567,18 +567,18 @@ theorem wExact_iff (U : T) (X : CosimplicialObject T) (a : (CosimplicialObject.c
       rw [i1 (inj _ h0 _ _ hxy)]
     · intro y hy
       obtain ⟨y, rfl⟩ := surj _ h0 y
-      erw [nat, nat] at hy
+      rw [nat, nat] at hy
       obtain ⟨x, hx⟩ := i2 y (inj _ h1 _ _ hy)
       exact ⟨ε.app U x, (nat _ x).trans (congrArg _ hx)⟩
   · rintro ⟨i1, i2, i3⟩
     refine ⟨?_, ?_, fun n => (exactAt_iff ε hX n).2 (i3 n)⟩
     · intro x y hxy
       have h := congrArg (ε.app _) hxy
-      erw [← nat, ← nat] at h
+      rw [← nat, ← nat] at h
       exact inj _ hU _ _ (i1 h)
     · intro y hy
       have h := congrArg (ε.app _) hy
-      erw [← nat, ← nat] at h
+      rw [← nat, ← nat] at h
       obtain ⟨x, hx⟩ := i2 _ h
       obtain ⟨x, rfl⟩ := surj _ hU x
       erw [nat] at hx
@@ -759,7 +759,7 @@ theorem preservesFilteredColimits_of_isPointwiseLeftKanExtension
                dsimp at hn ⊢
                simp only [Category.comp_id]
                change G.map f.left ≫ _ = _
-               erw [reassoc_of% hn, ← Functor.map_comp_assoc]
+               rw [reassoc_of% hn, ← Functor.map_comp_assoc]
                exact comp_eq_of_fac E hc s g.left _ _
                  (by rw [Category.assoc, hψ g', hψ g]; exact CostructuredArrow.w f) } }
   have ht : ∀ (s : Cocone (D ⋙ E.right)) (X : finTypeZ.FullSubcategory) (φ : finTypeZ.ι.obj X ⟶ c.pt),
@@ -775,7 +775,7 @@ theorem preservesFilteredColimits_of_isPointwiseLeftKanExtension
       intro X φ
       have h1 := ht s X (φ ≫ c.ι.app k)
       simp only [Functor.mapCocone_ι_app]
-      erw [← Functor.map_comp_assoc, h1]
+      rw [← Functor.map_comp_assoc, h1]
       exact comp_eq_of_fac E hc s X _ _ (hψ _)
     uniq := fun s m hm => by
       apply (hE c.pt).hom_ext'

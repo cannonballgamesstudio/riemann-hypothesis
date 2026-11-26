@@ -24,7 +24,7 @@ theorem evAt_spMap_comp (R R' : Type) [CommRing R] [CommRing R'] (X : Scheme.{0}
   have e4 : (spMap φ ≫ b).appLE U ⊤ h' ≫ (Scheme.ΓSpecIso (CommRingCat.of R')).hom =
       b.appLE U ⊤ h ≫ (Scheme.ΓSpecIso (CommRingCat.of R)).hom ≫ CommRingCat.ofHom φ := by
     rw [← e2, e3, Category.assoc]
-    erw [Scheme.ΓSpecIso_naturality]
+    rw [Scheme.ΓSpecIso_naturality]
   exact congrArg (fun ψ => ψ.hom f) e4
 
 theorem evAt_comp (R : Type) [CommRing R] (X Y : Scheme.{0}) (b : Sp R ⟶ X) (g : X ⟶ Y) (U : X.Opens) (V : Y.Opens)
@@ -79,7 +79,7 @@ theorem exists_evAt_eq (R : Type) [CommRing R] (X : Scheme.{0}) (U : X.Opens) (h
   have e4 : CommRingCat.ofHom (evAt (Spec.map (CommRingCat.ofHom φ) ≫ hU.fromSpec : Sp R ⟶ X) h) =
       CommRingCat.ofHom φ := by
     rw [evAt_eq_comp, ← e2, e1, e3, Category.assoc]
-    erw [Scheme.ΓSpecIso_naturality]
+    rw [Scheme.ΓSpecIso_naturality]
     exact (Scheme.ΓSpecIso Γ(X, U)).inv_hom_id_assoc _
   exact congrArg CommRingCat.Hom.hom e4
 
@@ -101,7 +101,7 @@ theorem evAt_fromSpecStalk' (R : Type) [CommRing R] (X : Scheme.{0}) (p : X) (φ
   have e4 : (Spec.map (CommRingCat.ofHom φ) ≫ X.fromSpecStalk p).appLE U ⊤ (fun q _ => h0 (Set.mem_univ _)) ≫
       (Scheme.ΓSpecIso (CommRingCat.of R)).hom = X.presheaf.germ U p hp ≫ CommRingCat.ofHom φ := by
     rw [← e2, e1, e3, Category.assoc, Category.assoc]
-    erw [Scheme.ΓSpecIso_naturality]
+    rw [Scheme.ΓSpecIso_naturality]
     exact congrArg (_ ≫ ·) ((Scheme.ΓSpecIso (X.presheaf.stalk p)).inv_hom_id_assoc _)
   exact congrArg (fun ψ => ψ.hom s) e4
 
