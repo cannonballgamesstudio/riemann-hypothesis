@@ -337,7 +337,7 @@ theorem eq_lf (y : FrPt Xo c S) (w) (hw : IsTanAt y.x w) (v : Sp (DualNumber S) 
   rw [lf_snd]
   refine pullback.hom_ext ?_ (by rw [Category.assoc, h2, Category.assoc, ptF_snd])
   rw [Category.assoc, ← Y.m0.toSABMap.cart.1.w, ← Category.assoc]
-  erw [h1]
+  rw [h1]
   rw [hw.1, Category.assoc, ptF_fst]
 
 def unitAt (z : Sp S ⟶ Xo.XF c) : Sp S ⟶ Y.t.G.left :=
@@ -346,7 +346,7 @@ def unitAt (z : Sp S ⟶ Xo.XF c) : Sp S ⟶ Y.t.G.left :=
 theorem lf_le_iff (y : FrPt Xo c S) (w) (hw : IsTanAt y.x w) (V : Y.t.G.left.Opens) :
     ⊤ ≤ (lf Y y w hw ≫ Y.m.φ) ⁻¹ᵁ V ↔ ⊤ ≤ unitAt Y (ptF y) ⁻¹ᵁ V := by
   rw [le_iff_fst, ← Category.assoc, fst_lift Y.m0.toSABMap.cart (ptF_fst y) _ (lf_snd Y y w hw)
-    (by erw [lf_fst]; exact hw.2)]
+    (by rw [lf_fst]; exact hw.2)]
   rfl
 
 theorem snd_lf_comb (y : FrPt Xo c S) (τ : E →+* ℂ) (a : Fin (Dw.mult τ) → S) (w) (hw : IsTanAt y.x w)
@@ -450,7 +450,7 @@ theorem arc_lf {A : Type} [CommRing A] [IsDomain A] (s : c.F →+* A) {a : ArcIn
   rw [← cancel_mono (spMap β)]
   have e2 : Y.m.φ ≫ Y.t.G.hom ≫ Y.s = Y.oF.t.G.hom ≫ pullback.snd _ _ ≫ spMap β := by
     rw [← Category.assoc]
-    erw [Y.m.cart.1.w]
+    rw [Y.m.cart.1.w]
     rw [Category.assoc, Category.assoc, pullback.condition (f := Y.s), ← Category.assoc Y.jQ, Y.jQ_over]
   have e3 : W.m.φ ≫ Y.t.G.hom = W.t.G.hom ≫ χ := W.m.cart.1.w
   have e4 : (show Sp _ ⟶ _ from v.left) ≫ W.t.G.hom = spMap (algebraMap _ (DualNumber (PowerSeries A))) := Over.w v

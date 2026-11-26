@@ -342,7 +342,7 @@ theorem gtAct {oa : D.OAct O} (hact : ∀ (a : O) z, u.ex (A.F a z) = u.ex z ≫
     · exact is_lift_exponential_zero hct hxb _ _ k
     · exact (Category.assoc _ _ _).symm.trans ((congrArg (· ≫ _) hp).trans
         (isLift_rosati (hact (star r)) (hact r) _ _ k))
-  · erw [Fintype.prod_sum_type]
+  · rw [Fintype.prod_sum_type]
     simp only [Sum.elim_inl, Sum.elim_inr, Fin.prod_univ_four, Fin.prod_univ_six, rosatiLift, Out.rosatiε,
       Out.DegPre.gtε, Matrix.cons_val, zpow_neg, zpow_one, A.ct_smul, AnArc.actV_snd]
     apply Additive.ofMul.injective

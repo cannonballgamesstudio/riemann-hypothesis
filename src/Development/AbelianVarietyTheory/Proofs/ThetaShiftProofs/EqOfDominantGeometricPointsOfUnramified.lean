@@ -107,7 +107,7 @@ theorem fix_torsion_of_fix_geometric_of_etale {S : Scheme.{0}} (A : Over S) [Grp
   let i : K ⟶ A := Over.homMk (pullback.fst (mulA A M).left η[A].left) (by
     change pullback.fst (mulA A M).left η[A].left ≫ A.hom = pullback.snd (mulA A M).left η[A].left
     rw [← Over.w (mulA A M), pullback.condition_assoc]
-    erw [hη]
+    rw [hη]
     exact Category.comp_id _)
   have hi : i ^ M = 1 := by
     rw [← hmul]

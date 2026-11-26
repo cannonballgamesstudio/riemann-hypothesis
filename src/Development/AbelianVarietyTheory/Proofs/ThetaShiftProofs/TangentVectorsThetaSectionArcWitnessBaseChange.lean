@@ -398,7 +398,7 @@ theorem lieImg_baseChange [IsLocalRing A] [IsLocalRing A']
     have := thick_mono (PowerSeries A) I n
     have : Mono (Out.fstG I n W.t.G).left := inferInstanceAs (Mono (pullback.fst _ _))
     rw [← cancel_mono (Out.fstG I n W.t.G).left, Category.assoc, hh, ← Category.assoc, hf, Category.assoc]
-    erw [hv']
+    rw [hv']
     rw [← Category.assoc, hρ, Category.assoc, Category.assoc, hx]
   refine genRelR_baseChange hs S W.spec.2.1 W.P.D.toPre.P.isLB a.D₀.P.isLB ((W.P.U.gt n).t_gen _) (ν.isGen _) ho Ht Hν
     hvn hκ (fun k => (pull_grp p).1.hom_ext ?_ ?_) G

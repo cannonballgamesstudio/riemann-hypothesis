@@ -154,7 +154,7 @@ theorem secVal_feTranslate (h : u.IsAH Hm χ) (hr : u.IsRig D.rig) (j : ℕ) {α
   let κ : 𝟙_ (Over (Sp ℂ)) ⟶ Out.TK ℂ := Over.homMk (Out.jFK (R := ℂ) ℂ) jFK_jK
   have v := val_feGen D j mu α (u.ex z) κ hJ
   rw [(cp α).trans ha.symm, (cp mu).trans hm.symm, cubN_eq h, th_eq h, val_tau D _ hJ, show κ.left = Out.jFK (R := ℂ) ℂ from rfl] at v
-  erw [va, vm, vs, vr] at v
+  rw [va, vm, vs, vr] at v
   obtain ⟨G, hG⟩ : IsUnit (genVal u hL (feGen D j mu α) _ _) := (genVal_ne_zero hL _ hz).isUnit
   have v' := val_eq_stU hL (feGen D j mu α) hz hG.symm
   simp only [← map_inv, ← map_pow, ← map_mul] at v

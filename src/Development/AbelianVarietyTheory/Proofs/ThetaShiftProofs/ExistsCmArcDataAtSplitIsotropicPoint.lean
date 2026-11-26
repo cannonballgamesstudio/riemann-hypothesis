@@ -1180,7 +1180,7 @@ theorem exists_cmObj_extend {ρ : 𝓞 K} {σ : K →+* ℂ} {p q : ℕ} (X : CM
     apply Over.OverMorphism.ext
     simp only [Function.comp_apply]
     rw [hB, Over.comp_left, Over.comp_left, Category.assoc]
-    erw [hφ]
+    rw [hφ]
     rw [← Category.assoc, ← hA, MulEquiv.apply_symm_apply]
   · refine (PairingFibre.weilEq_iff (a i.isLeft).cart (a i.isLeft).cart mb.cart (a i.isLeft).cart X.B.t.PP.isLB
       (X.A i.isLeft).t.PP.isLB B'.t.PP.isLB (A' i.isLeft).t.PP.isLB (sab_lbIso mb) (sab_lbIso (a i.isLeft)) (hφ i) (hφ i)
@@ -1246,7 +1246,7 @@ theorem exists_cmObj_baseChange : Known → ∀ (E : Type) [Field E] [NumberFiel
       apply Over.OverMorphism.ext
       simp only [Function.comp_apply]
       rw [hB, Over.comp_left, Over.comp_left, Category.assoc]
-      erw [hφ]
+      rw [hφ]
       rw [← Category.assoc, ← hA, MulEquiv.apply_symm_apply]
     · refine (PairingFibre.weilEq_iff (a i.isLeft).cart (a i.isLeft).cart mb.cart (a i.isLeft).cart X.B.t.PP.isLB
         (X.A i.isLeft).t.PP.isLB B'.t.PP.isLB (A' i.isLeft).t.PP.isLB (sab_lbIso mb) (sab_lbIso (a i.isLeft)) (hφ i) (hφ i)

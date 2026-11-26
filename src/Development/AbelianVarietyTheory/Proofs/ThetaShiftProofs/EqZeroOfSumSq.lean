@@ -72,14 +72,14 @@ theorem trace_mul_pairE (ξ : Module.Dual ℤ X) (b : 𝓞 E) (x : X) :
         (integralBasis E) j j
       rw [Algebra.traceForm_apply, ite_eq_left rfl, integralBasis_apply] at this
       rw [← mul_assoc, mul_comm _ ((_ : ℤ) : E), ← zsmul_eq_mul, map_zsmul, mul_comm]
-      erw [this]
+      rw [this]
       simp
     · intro i _ hij
       have := LinearMap.BilinForm.apply_dualBasis_left (traceForm_nondegenerate ℚ E)
         (integralBasis E) i j
       rw [Algebra.traceForm_apply, ite_eq_right (Ne.symm hij), integralBasis_apply] at this
       rw [← mul_assoc, mul_comm _ ((_ : ℤ) : E), ← zsmul_eq_mul, map_zsmul, mul_comm]
-      erw [this]
+      rw [this]
       simp
     · simp
   have hb := (RingOfIntegers.basis E).sum_repr b
@@ -91,7 +91,7 @@ theorem trace_mul_pairE (ξ : Module.Dual ℤ X) (b : 𝓞 E) (x : X) :
   refine Finset.sum_congr rfl fun j _ => ?_
   have := h1 j
   simp only [zsmul_eq_mul] at *
-  erw [this]
+  rw [this]
   simp
 
 theorem pairE_smul (ξ : Module.Dual ℤ X) (a : 𝓞 E) (x : X) : pairE ξ (a • x) = (a : E) * pairE ξ x := by
@@ -102,7 +102,7 @@ theorem pairE_smul (ξ : Module.Dual ℤ X) (a : 𝓞 E) (x : X) : pairE ξ (a �
     have h2 := trace_mul_pairE ξ (RingOfIntegers.basis E j * a) x
     rw [mul_smul, ← h1] at h2
     push_cast at h2
-    erw [h2]
+    rw [h2]
     exact sub_self _
   have h0 : Algebra.traceForm ℚ E (pairE ξ (a • x) - (a : E) * pairE ξ x) = 0 :=
     (integralBasis E).ext h

@@ -35,7 +35,7 @@ def toStalk : ℂ →+* (Sp ℂ).presheaf.stalk pt :=
 theorem gs_eq_toStalk {X : Scheme.{0}} (x : Sp ℂ ⟶ X) (U : X.Opens) (h : ⊤ ≤ x ⁻¹ᵁ U) (f : Γ(X, U)) :
     gs x pt U f = toStalk (valAt' x U f) := by
   rw [gs_eq x pt U (h trivial), valAt', dite_eq_left h, valAt, toStalk, RingHom.comp_apply]
-  erw [(Scheme.ΓSpecIso (CommRingCat.of ℂ)).hom_inv_id_apply]
+  rw [(Scheme.ΓSpecIso (CommRingCat.of ℂ)).hom_inv_id_apply]
   exact (TopCat.Presheaf.germ_res_apply (Sp ℂ).presheaf (homOfLE h) pt trivial _).symm
 
 variable {A : Over (Sp ℂ)} [GrpObj A] {L : LB A.left} {g : ℕ} {u : HolUnif A L g}

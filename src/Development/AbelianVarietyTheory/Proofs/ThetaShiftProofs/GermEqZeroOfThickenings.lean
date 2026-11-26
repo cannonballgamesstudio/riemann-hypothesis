@@ -538,7 +538,7 @@ theorem tau_trans (h : IsFormalPt U J g x) (hL : ⊤ ≤ x ⁻¹ᵁ U.LG.L.U jL)
     have key := congrArg (gm y z _) ((U.w_gen e) ((fun _ => jM), (fun _ => jL)) ((fun _ => jM'), (fun _ => jL')))
     erw [gm_res _ z _ hV, map_mul, gm_res _ z _ hV] at key
     change gm y z _ ((U.w e).s (fun _ => jM, fun _ => jL)) = _
-    erw [key]
+    rw [key]
     congr 1
     show gm y z _ (res _ _ * (res _ _)⁻¹) = _
     erw [map_mul, map_inv, gm_res _ z _ hV, gm_res _ z _ hV]
