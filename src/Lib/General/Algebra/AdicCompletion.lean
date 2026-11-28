@@ -14,8 +14,8 @@ import Mathlib.RingTheory.TotallySplit
 import Mathlib.RingTheory.Valuation.Integral
 import Mathlib.Topology.Sheaves.Presheaf
 import TauCeti.NumberTheory.Padics.Complex.Basic
-public import Lib.Speed
 import TauCeti.RingTheory.AdicCompletion.Finite
+public import Lib.Speed
 
 /-!
 # Adic completeness: p-adic tools, extension by continuity, topological bases
