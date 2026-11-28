@@ -954,6 +954,10 @@ lemma isFiniteLerayHirsch_topPoints_of_surjective {J : Type*} {d : J → ℕ}
   -- `isFiniteLerayHirsch_of_integrate_params` asks for, with the operations
   -- `T i : w ↦ θ i · I.extendToZeros w`.
   let X := ringOf (𝟭 (TestOver A)) ⋙ projLinePow (Fin m)
+  -- Pulled back along `I.constToZeros`, the extension of `w` is the restriction of `w` to `points`.
+  have h_ext (t : LineStage A m)
+      (w : TotalH (t.toTestOver ⋙ abCoker (ℓ • 𝟙 (relFreeAb I.topPoints))) t.theory.functor) :=
+    pullbackAlong_extendToZeros_eq (t := t) (w := w)
   let T (i : J) : NaturalOp m (abCoker (ℓ • 𝟙 (relFreeAb I.topPoints))) N :=
     { app t :=
         (comp (map (restrictAlong (sectionLift (X := X) t.toTestOver t.points)) (θ i).toTotalH
@@ -1001,8 +1005,7 @@ lemma isFiniteLerayHirsch_topPoints_of_surjective {J : Type*} {d : J → ℕ}
     refine Finset.sum_congr rfl fun i _ ↦ ?_
     exact (mapThenComp_comp
       (map_restrictAlong_restrictAlong (elementsProj X) (sectionLift _ t.points) (β i))).symm
-  -- Specialise `hβ` to the pair `(t.points, q')`; `pullbackAlong_extendToZeros_eq` gives its
-  -- hypothesis.
+  -- Specialise `hβ` to the pair `(t.points, q')`; its hypothesis is `h_ext`.
   let s : t.Base ⥤ E :=
     sectionLift (X := (elementsProj X ⋙ 𝟭 (TestOver A)) ⋙ X)
       (sectionLift (X := X) t.toTestOver t.points) q'
@@ -1010,10 +1013,10 @@ lemma isFiniteLerayHirsch_topPoints_of_surjective {J : Type*} {d : J → ℕ}
     hβ _ s t.theory (I.extendToZeros t.theory t.points w)
       (pullbackAlong (t.toTestOver.whiskerLeft (abCoker.π _)) w)
       (by
-        -- (`apply`: compares the lemma with the goal once; as a term it is compared twice)
+        -- (`apply`: compares `h_ext t w` with the goal once; as a term it is compared twice)
         refine (mapThenComp_comp map_homClass).trans
           ((congrArg _ congr(comp $map_homClass _)).trans ?_)
-        apply pullbackAlong_extendToZeros_eq t w)
+        apply h_ext t w)
   refine (congrArg _ h_sum).trans (.trans (comp_assoc_of_eq (.symm ?_) _) h_move)
   -- The moved kernel at `(t.points, q')` is `lerayHirsch θ _ β` restricted along `t.points`, then
   -- pulled back by `I.atSection q'`.
